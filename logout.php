@@ -9,11 +9,11 @@ session_start();//session is a way to store information (in variables) to be use
 
 // THIS CODE TO BE TRANSFERRED TO ANOTHER PHP FILE LATER->
 $sessionStatus = "Closed";
-$con = mysqli_connect("localhost","root","");
+$con = mysqli_connect("localhost","trynowb_Testuser","T;c=.@E!m7Pm");
 if (!$con) {
     die('Could not connect: ' . mysqli_error($con));
 }
-mysqli_select_db($con,"users");
+mysqli_select_db($con,"trynowb_my_db");
 $userEmail = $_SESSION['email'];
 $userName = $_SESSION['userName'];
 $sessionBeginEnd = date('U');
