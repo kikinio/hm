@@ -1,0 +1,4 @@
+{"user_word_pointer":"Niki","user_word_guesser":"Kiril","word":"BURUNDI","num_pics":"5"}
+[{"word":"Bulgaria"}]
+[{"word":"Bulgaria"}]
+[{"word":"arsenal"}]

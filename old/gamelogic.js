@@ -2,7 +2,6 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js";
 //var word = 'Antigua. And; (Barbuda)'.toUpperCase();
 //word = word1;
 console.log(word);
-console.log(userGuesser);
 replaceSymbols();
 function replaceSymbols (){
 	word = word.replace(/\s/g, "-");
@@ -144,7 +143,7 @@ function consL(){
 	console.log("word:", word, "initialLives:", initialLives, "lives:", lives, "len:", len, "currentWord:", currentWord, "numPic:", numPic);
 }
 function consLObjAll(){
-	objectsAll = {word: word, initialLives: initialLives, lives: lives, len: len, currentWord: currentWord, numPic: numPic, chgPicIndicator: chgPicIndicator, userGuesser: userGuesser};
+	objectsAll = {word: word, initialLives: initialLives, lives: lives, len: len, currentWord: currentWord, numPic: numPic, chgPicIndicator: chgPicIndicator};
 	console.log(objectsAll.word);
 	console.log(objectsAll);
 	sendObjAll(objectsAll);
