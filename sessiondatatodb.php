@@ -1,13 +1,11 @@
 <?php
 
 //SEND SESSION DATA TO DB: users, TABLE: sessions:
-
-$con = mysqli_connect("localhost","root","");
+$con=mysqli_connect("localhost","trynowb_Testuser","T;c=.@E!m7Pm");
 if (!$con) {
     die('Could not connect: ' . mysqli_error($con));
 }
-
-mysqli_select_db($con,"users");
+mysqli_select_db($con,"trynowb_my_db");
 
 
 $str_json = file_get_contents('php://input');

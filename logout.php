@@ -18,7 +18,7 @@ $userEmail = $_SESSION['email'];
 $userName = $_SESSION['userName'];
 $sessionBeginEnd = date('U');
 
-$sql = "INSERT INTO `users`.`sessions` (`session_id`, `user_email`, `user_name`, `session_begin_end`, `session_status`)
+$sql = "INSERT INTO `sessions` (`session_id`, `user_email`, `user_name`, `session_begin_end`, `session_status`)
         VALUES (
         NULL, '".$userEmail."', '".$userName."', '".$sessionBeginEnd."', '".$sessionStatus."'
         )";
