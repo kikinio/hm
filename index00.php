@@ -1,4 +1,13 @@
-<!DOCTYPE html>
+<?php
+session_start();
+
+if(!$_SESSION['email'])
+{
+    header("Location: login.php");//redirect to login page to secure the welcome page without login access.
+    
+}
+include("database/db_conection.php");
+?>
 <html>
 <head>
 </head>
@@ -12,8 +21,16 @@
 <body>
 <div class="wrapper0">
    <h1 id="1234">Hangman Game</h1>
+      <h1>Welcome
+        <?php
+        echo $_SESSION['email'];
+        ?>
+   </h1><br>
    <p>Use the alphabet below to guess the word.</p>
 </div>
+    <div id="showwordguessers">
+        The Word Guessers Will Apper Here
+    </div>    
 <div class="wrapper">
 	<p>Select number of lives (optional):</p>
 	<select id='setLives' onchange="selectLives()">
@@ -65,10 +82,57 @@
 <div>
 <p id=livesMessage></p>
 
-
-
+    <?php
+    do{
+        $sql = "SELECT user_word_guesser, current_word FROM `gamelogs` WHERE initial_lives = lives AND user_word_pointer = '" . $_SESSION['email'] . "' ORDER BY id DESC LIMIT 1";
+        $result = mysqli_query($dbcon, $sql);
+        $row = mysqli_fetch_array($result);
+        $str = $row[0];
+        $str2 = $row[1];
+   //     $needle = '*';
+   //     $needle2 = '-';
+        $len = strlen($str2);
+   //     echo $str2[0];
+        $error = '1';
+        for ($x = 0; $x < $len; $x++){
+ //           var_dump($str2[$x]!=='*' && $str2[$x]!=='-');
+            if ($str2[$x]!=='*' && $str2[$x]!=='-'){
+            $error = 'error';
+            //echo $str2[$x];
+            break;
+            }
+        }
+    //    echo $str;
+    //    echo $str2;
+    }while(!isset($str) || $error == 'error');   
+    ?>
+    
 <script type="text/javascript">
+
+var phpWordGuesser = '<?php echo $str;?>';
+console.log(phpWordGuesser);
+/*    
+function wordGuesser(){
+    $.ajax({
+      url: "showwordguessers.php",
+      async: true,
+      method: "POST",
+      dataType: "json",
+      success:(function(data) {
+            $("#showwordguessers").empty();
+            $.each(data, function(i, object) {
+            $.each(object, function(property, value) {
+            //$("#wordchoosers").append( "</br>Player: <a href='" + value + "' onclick="startGame(koko@gmail.com)>" + value + "</a>");
+            //$("#wordchoosers").append( "</br>Player: <a href='welcome.php' onclick='startGame(koko@gmail.com)'>" + value + "</a>");
+            $("#showwordguessers").append( "</br>Player: <a href='index.php?oe="+ value +"' onclick='startGame(" + value + ")'>" + value + "</a>");
+            })
+        });
+        })  
+    })
+}    
+*/    
 var num_pics3 = 1;
+console.log(num_pics3);
 var initial_lives2 = 5;
 //check for browser support
 if(typeof(EventSource)!=="undefined") {
@@ -92,8 +156,7 @@ if(typeof(EventSource)!=="undefined") {
                 var chgPicIndicator2 = data1.chgPicIndicator;
                 var id2 = data1.id;
                 console.log(chgPicIndicator2);
-                
-                if (user_word_guesser2 === 'Kiril'){
+                if (user_word_guesser2 === phpWordGuesser){
                     //document.getElementById("serverData").innerHTML = event.data;
                     document.getElementById("serverData").innerHTML = id2;
     //                document.getElementById("picture").src="images/lives" + initial_lives2 + "/ss" + num_pics2 + ".gif";
@@ -120,11 +183,6 @@ if(typeof(EventSource)!=="undefined") {
 else {
 	document.getElementById("serverData").innerHTML="Whoops! Your browser doesn't receive server-sent events.";
 }
-
-
-
-
 </script>
-
 </body>
 </html>

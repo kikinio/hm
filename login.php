@@ -71,7 +71,7 @@ if(isset($_POST['login']))
     $userName1 = $row1['user_name'];
     if(mysqli_num_rows($run))
     {
-        echo "<script>window.open('index.php','_self')</script>";
+        echo "<script>window.open('start1.php','_self')</script>";
 
         $_SESSION['email']=$user_email;//here session is used and value of $user_email store in $_SESSION.
         $_SESSION['userName']=$userName1;

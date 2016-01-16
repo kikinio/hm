@@ -7,7 +7,6 @@
  */
 
 $dbcon=mysqli_connect("localhost","trynowb_Testuser","T;c=.@E!m7Pm");
-
 mysqli_select_db($dbcon,"trynowb_my_db");
 
 ?>

@@ -1,34 +1,30 @@
 <?php
-
-
 session_start();
-
 if(!$_SESSION['email'])
 {
     header("Location: login.php");//redirect to login page to secure the welcome page without login access.
-    
 }
-    include('getword.php');
     $sessionStatus = "Active";
-    print_r(session_id());
-    print_r($_SESSION);
+if(!isset($_GET['oe']))
+{
+    include('getword.php');
+}else{
+    $oppEml = $_GET['oe'];
+    include('getwordopponet.php');
+}
 ?>
-
 <html>
-<head>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <title>
-            Hangman Game
-        </title>
-</head>
+<?php
+include('head.php');
+?>
 <body>
 <div class="wrapper0">
    <h1 id="1234">Hangman Game</h1>
-   <h1>Welcome
+   <h3>Welcome
         <?php
         echo $_SESSION['email'];
         ?>
-   </h1><br>
+   </h3><br>
    <p>Use the alphabet below to guess the word.</p>
 </div>
 <div class="wrapper">
@@ -45,8 +41,8 @@ if(!$_SESSION['email'])
 	<input type="text" name="name" id="uniqueID" value="5" />
 -->
 
-    <p id="test">123</p>
-    <p id="test1">1234</p>
+    <p id="test"></p>
+    <p id="test1"></p>
 	<div>PIC<img id="picture" alt="Hangman1" width="493" height="336"></div>
 	<p id="nword"></p>
 	<div id="picture1">PIC</div>
@@ -88,8 +84,9 @@ if(!$_SESSION['email'])
 
 </div>
 <script>
+var userWordPointer = '<?php echo $oppEml; ?>';
 var word = '<?php echo $newVar; ?>'.toUpperCase();
-var userGuesser = '<?php echo $_SESSION['userName']; ?>';
+var userGuesser = '<?php echo $_SESSION['email']; ?>';
 var userName = '<?php echo $_SESSION['userName']; ?>';
 var userEmail = '<?php echo $_SESSION['email']; ?>';
 var sessionBeginEnd = '<?php echo date('U'); ?>';

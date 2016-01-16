@@ -1,0 +1,34 @@
+#menu {
+	float: left;
+	width: 20%;
+}
+
+#menu div {
+	border: 1px solid black;
+	padding: 10px;
+}
+
+#menu a {
+	text-decoration: none;
+	color: maroon;
+}
+
+#homepage {
+	float:left;
+	width:80%;
+	color:black
+}
+
+#homepage h2 {
+	background: wheat;
+}
+
+#about_us {
+	float:left;
+	width:80%;
+	color:black
+}
+
+#about_us h2 {
+	background: lime;
+}

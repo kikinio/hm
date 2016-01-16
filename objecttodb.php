@@ -38,14 +38,14 @@ $str_json = file_get_contents('php://input');
 
 $str_json2 = json_decode($str_json, true);
 //print_r($str_json2);
-$userWordPointer = "Niki";
-$userWordGuesser = "Kiril";
+//$userWordPointer = "Niki";
+//$userWordGuesser = "Kiril";
 //$getit = $str_json2->['word'][5];
 //$word = $str_json2['word'];
 //echo $word;
     $sql = "INSERT INTO `gamelogs` (`id`, `user_word_pointer`, `user_word_guesser`, `word`, `initial_lives`, `lives`, `word_length`, `current_word`, `num_pics`, `chgPicIndicator`)
     VALUES (
-    NULL, '".$userWordPointer."', '".$str_json2['userGuesser']."', '".$str_json2['word']."', '".$str_json2['initialLives']."', '".$str_json2['lives']."', '".$str_json2['len']."', '".$str_json2['currentWord']."', '".$str_json2['numPic']."', '".$str_json2['chgPicIndicator']."'
+    NULL, '".$str_json2['userWordPointer']."', '".$str_json2['userGuesser']."', '".$str_json2['word']."', '".$str_json2['initialLives']."', '".$str_json2['lives']."', '".$str_json2['len']."', '".$str_json2['currentWord']."', '".$str_json2['numPic']."', '".$str_json2['chgPicIndicator']."'
     )";
     mysqli_query($con, $sql);
     

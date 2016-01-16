@@ -81,7 +81,7 @@ function showSymbols(currentWord, symbol){
 function cli1(letter){
 	console.log(letter);
 
-	document.getElementById("test").innerHTML = letter;
+//	document.getElementById("test").innerHTML = letter;
 	var e = document.getElementById("setLives");
 	var initialLives = e.options[e.selectedIndex].value;
 	//verification(letter, currentWord);
@@ -144,7 +144,7 @@ function consL(){
 	console.log("word:", word, "initialLives:", initialLives, "lives:", lives, "len:", len, "currentWord:", currentWord, "numPic:", numPic);
 }
 function consLObjAll(){
-	objectsAll = {word: word, initialLives: initialLives, lives: lives, len: len, currentWord: currentWord, numPic: numPic, chgPicIndicator: chgPicIndicator, userGuesser: userGuesser};
+	objectsAll = {word: word, initialLives: initialLives, lives: lives, len: len, currentWord: currentWord, numPic: numPic, chgPicIndicator: chgPicIndicator, userGuesser: userGuesser, userWordPointer: userWordPointer};
 	console.log(objectsAll.word);
 	console.log(objectsAll);
 	sendObjAll(objectsAll);
